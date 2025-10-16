@@ -5,7 +5,7 @@
 
 <img src="public/logo-transparent.png" alt="logo" width="400" height="auto">
 
-### Supported Browsers
+### Supported Browsers 
 
 [![Chrome](https://img.shields.io/badge/Chrome-Supported-brightgreen?logo=googlechrome&logoColor=white)](#)
 [![Edge](https://img.shields.io/badge/Edge-Supported-brightgreen?logo=microsoftedge&logoColor=white)](#)
