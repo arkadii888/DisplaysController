@@ -36,7 +36,7 @@
 
 Follow this simple steps:
 
-1. Click this button in **[Control Panel](https://svettuff.github.io/DisplaysController/)**
+1. Click this button in **[Control Panel](https://dc-4cx.pages.dev/)**
 
     ![img.png](public/img.png)
 
