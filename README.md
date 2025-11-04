@@ -36,7 +36,7 @@
 
 Follow this simple steps:
 
-1. Click this button in **[Control Panel](https://dc-4cx.pages.dev/)**
+1. Click this button in **[Control Panel](https://dc-4cx.pages.dev/)** or download it from **[Releases](https://github.com/arkadii888/DisplaysController/releases)**
 
     ![img.png](public/img.png)
 
