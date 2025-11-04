@@ -34,6 +34,8 @@
 
 **To control your displays please install simple agent**
 
+At the moment, this feature is disabled because the .exe file with the agent is recognized as malicious, even though it clearly is not. If anyone has created Rust .exe files that bypass this problem, please write to me.
+
 Follow this simple steps:
 
 1. Click this button in **[Control Panel](https://dc-4cx.pages.dev/)** or download it from **[Releases](https://github.com/arkadii888/DisplaysController/releases)**
