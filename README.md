@@ -1,7 +1,7 @@
 # Displays Controller
 
 #### A tool that makes it easy to **view** and **control** all displays connected to your computer
-#### Link to Control Panel: https://svettuff.github.io/DisplaysController/
+#### Link to Control Panel: https://dc-4cx.pages.dev/
 
 <img src="public/logo-transparent.png" alt="logo" width="400" height="auto">
 
