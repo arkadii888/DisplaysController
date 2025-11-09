@@ -1,20 +1,17 @@
 # Displays Controller
 
-#### A tool that makes it easy to **view** and **control** all displays connected to your computer
-#### Link to Control Panel: https://dc-4cx.pages.dev/
+### A tool that makes it easy to **view** and **control** all displays connected to your computer
 
-<img src="public/logo-transparent.png" alt="logo" width="400" height="auto">
+#### Supported Browsers 
 
-### Supported Browsers 
+[![Google Chrome](https://img.shields.io/badge/Google%20Chrome-4285F4?logo=GoogleChrome&logoColor=white)](#)
+[![Edge](https://custom-icon-badges.demolab.com/badge/Microsoft%20Edge-2771D8?logo=edge-white&logoColor=white)](#)
 
-[![Chrome](https://img.shields.io/badge/Chrome-Supported-brightgreen?logo=googlechrome&logoColor=white)](#)
-[![Edge](https://img.shields.io/badge/Edge-Supported-brightgreen?logo=microsoftedge&logoColor=white)](#)
+#### Supported Systems
 
-### Agent Supported Systems
-
-[![Windows](https://img.shields.io/badge/Windows-Supported-brightgreen?logo=windows&logoColor=white)](#)
-[![macOS](https://img.shields.io/badge/macOS-In%20Progress-orange?logo=apple&logoColor=white)](#)
-[![Linux](https://img.shields.io/badge/Linux-In%20Progress-orange?logo=linux&logoColor=white)](#)
+[![Windows](https://custom-icon-badges.demolab.com/badge/Windows-0078D6?logo=windows11&logoColor=white)](#)
+[![macOS](https://img.shields.io/badge/macOS-000000?logo=apple&logoColor=F0F0F0)](#)
+[![Linux](https://img.shields.io/badge/Linux-FCC624?logo=linux&logoColor=black)](#)
 
 ## Usage
 
