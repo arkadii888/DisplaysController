@@ -12,6 +12,23 @@ use std::{
     time::{Duration, Instant},
 };
 
+const BANNER: &str = r#"
+______ _           _                   _____             _             _ _
+|  _  (_)         | |                 /  __ \           | |           | | |
+| | | |_ ___ _ __ | | __ _ _   _ ___  | /  \/ ___  _ __ | |_ _ __ ___ | | | ___ _ __
+| | | | / __| '_ \| |/ _` | | | / __| | |    / _ \| '_ \| __| '__/ _ \| | |/ _ \ '__|
+| |/ /| \__ \ |_) | | (_| | |_| \__ \ | \__/\ (_) | | | | |_| | | (_) | | |  __/ |
+|___/ |_|___/ .__/|_|\__,_|\__, |___/  \____/\___/|_| |_|\__|_|  \___/|_|_|\___|_|
+            | |             __/ |
+            |_|            |___/
+"#;
+
+fn print_banner_once() {
+    use std::io::{self, Write};
+    let _ = io::stdout().write_all(BANNER.as_bytes());
+    let _ = io::stdout().flush();
+}
+
 #[derive(Deserialize, Clone, Copy)]
 struct Display { left:i32, top:i32, width:i32, height:i32 }
 
@@ -85,10 +102,15 @@ fn wait_front_alive(url: &str, timeout: Duration) {
         }
         thread::sleep(Duration::from_millis(200));
     }
-    println!("Press to open Displays Controller -> {url}");
+    println!("Press to open -> {url}");
 }
 
 fn main() {
+    print_banner_once();
+
+    println!("");
+    println!("");
+
     #[cfg(windows)]
     let _front = spawn_front_dev("../front");
 
