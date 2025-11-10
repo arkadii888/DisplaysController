@@ -48,8 +48,14 @@ cd ../back
 cargo run
 ```
 
----
-
-**Press local addres to start using Displays Controller**
+**Press the local address to open**
 
 ![console.png](front/src/assets/console.png)
+
+
+### After setup is complete, you can use Displays Controller anytime by simply running:
+
+```bash
+cd back
+cargo run
+```
