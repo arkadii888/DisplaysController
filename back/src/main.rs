@@ -7,8 +7,6 @@ use enigo::{Enigo, MouseButton, MouseControllable, KeyboardControllable, Key};
 use serde::Deserialize;
 use tiny_http::{Server, Response, Method, Header};
 use std::{
-    io::Read,
-    process::{Command, Stdio, Child},
     sync::{Arc, Mutex},
     thread,
     time::{Duration, Instant},
@@ -20,10 +18,17 @@ struct Display { left:i32, top:i32, width:i32, height:i32 }
 #[derive(Deserialize)]
 #[serde(tag="type")]
 enum Input {
-    #[serde(rename="move")]           Move { x:f64, y:f64, display:Display },
-    #[serde(rename="click")]          Click { x:f64, y:f64, display:Display, button:Option<String>, count:Option<u8> },
-    #[serde(rename="wheel")]          Wheel { x:f64, y:f64, display:Display, deltaY:f64 },
-    #[serde(rename="key")]            Key   { key:String },
+    #[serde(rename="move")]  Move { x:f64, y:f64, display:Display },
+    #[serde(rename="click")] Click { x:f64, y:f64, display:Display, button:Option<String>, count:Option<u8> },
+    #[serde(rename="wheel")]
+    Wheel {
+        x:f64,
+        y:f64,
+        display:Display,
+        #[serde(rename = "deltaY")]
+        delta_y:f64
+    },
+    #[serde(rename="key")]  Key { key:String },
     #[serde(rename="return")]         ReturnCursor { display: Option<Display> },
     #[serde(rename="setReturnTarget")] SetReturnTarget { display: Display },
 }
@@ -80,7 +85,7 @@ fn wait_front_alive(url: &str, timeout: Duration) {
         }
         thread::sleep(Duration::from_millis(200));
     }
-    println!("[front] dev server at {url} (expected)");
+    println!("Press to open Displays Controller -> {url}");
 }
 
 fn main() {
@@ -119,7 +124,6 @@ fn main() {
     }
 
     let server = Server::http("127.0.0.1:27272").unwrap();
-    println!("Agent running on http://127.0.0.1:27272");
 
     for mut req in server.incoming_requests() {
         if req.method() == &Method::Options {
@@ -161,10 +165,10 @@ fn main() {
                 let n = count.unwrap_or(1).max(1);
                 for _ in 0..n { enigo.mouse_click(btn); }
             }
-            Ok(Input::Wheel { x, y, display, deltaY }) => {
+            Ok(Input::Wheel { x, y, display, delta_y }) => {
                 let (gx, gy) = map(x, y, &display);
                 enigo.mouse_move_to(gx, gy);
-                enigo.mouse_scroll_y((-deltaY as i32).clamp(-120, 120));
+                enigo.mouse_scroll_y((-delta_y as i32).clamp(-120, 120));
             }
             Ok(Input::Key { key }) => {
                 let k = match key.as_str() {
