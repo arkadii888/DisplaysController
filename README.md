@@ -54,6 +54,6 @@ cargo run
 ### After setup is complete, you can use Displays Controller anytime by simply running:
 
 ```bash
-cd back
+cd DisplaysController/back
 cargo run
 ```
