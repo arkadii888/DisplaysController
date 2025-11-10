@@ -13,6 +13,10 @@
 
 ## Usage
 
+### Allow display access (first time only)
+
+![allow.png](front/src/assets/allow.png)
+
 ### Connect your displays
 
 ![1.gif](front/src/assets/1.gif)
