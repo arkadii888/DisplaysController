@@ -53,7 +53,6 @@ fn spawn_front_dev(front_dir: &str) -> Option<std::process::Child> {
 
     const CREATE_NO_WINDOW: u32 = 0x0800_0000;
 
-    // запускаем напрямую npm.cmd без "cmd /C", и без окна
     let mut cmd = Command::new("npm.cmd");
     cmd.args(["run", "dev", "--", "--host", "--port", "5173"])
         .current_dir(front_dir)
