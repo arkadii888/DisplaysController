@@ -47,11 +47,3 @@ cargo run
 ```
 
 ![console.png](front/src/assets/console.png)
-
-
-### After setup is complete, you can use Displays Controller anytime by simply running:
-
-```bash
-cd DisplaysController/back
-cargo run
-```
