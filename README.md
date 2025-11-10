@@ -46,8 +46,6 @@ cd ../back
 cargo run
 ```
 
-**Press the local link to start using Displays Controller**
-
 ![console.png](front/src/assets/console.png)
 
 
