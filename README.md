@@ -15,14 +15,14 @@
 
 ### Connect your displays
 
-![1.gif](front/public/1.gif)
+![1.gif](front/src/assets/1.gif)
 
 ### Maximize and minimize previews
 
-![2.gif](front/public/2.gif)
+![2.gif](front/src/assets/2.gif)
 
 ### Click to control _(p.s. Display is behind my back)_
 
-![3.gif](front/public/3.gif)
+![3.gif](front/src/assets/3.gif)
 
 ## Installation
