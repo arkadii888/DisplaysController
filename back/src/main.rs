@@ -11,6 +11,7 @@ use std::{
     thread,
     time::{Duration, Instant},
 };
+use ctrlc;
 
 const BANNER: &str = r#"
 ______ _           _                   _____             _             _ _
@@ -69,7 +70,7 @@ fn move_to_center(enigo: &mut Enigo, d: &Display) {
 }
 
 #[cfg(windows)]
-fn spawn_front_dev(front_dir: &str) -> Option<std::process::Child> {
+fn spawn_front_dev(front_dir: &str, child_pid: &Arc<Mutex<Option<u32>>>) -> Option<std::process::Child> {
     use std::process::{Command, Stdio};
     use std::os::windows::process::CommandExt;
 
@@ -84,12 +85,25 @@ fn spawn_front_dev(front_dir: &str) -> Option<std::process::Child> {
         .creation_flags(CREATE_NO_WINDOW);
 
     match cmd.spawn() {
-        Ok(child) => Some(child),
+        Ok(child) => {
+            *child_pid.lock().unwrap() = Some(child.id());
+            Some(child)
+        }
         Err(e) => {
             eprintln!("[front] failed to start: {e}");
             None
         }
     }
+}
+
+#[cfg(windows)]
+fn kill_tree(pid: u32) {
+    use std::process::{Command, Stdio};
+    let _ = Command::new("taskkill")
+        .args(["/F", "/T", "/FI", &format!("PID eq {pid}")])
+        .stdout(Stdio::null())
+        .stderr(Stdio::null())
+        .status();
 }
 
 fn wait_front_alive(url: &str, timeout: Duration) {
@@ -112,7 +126,21 @@ fn main() {
     println!("");
 
     #[cfg(windows)]
-    let _front = spawn_front_dev("../front");
+    let child_pid: Arc<Mutex<Option<u32>>> = Arc::new(Mutex::new(None));
+
+    #[cfg(windows)]
+    {
+        let pid_ref = Arc::clone(&child_pid);
+        ctrlc::set_handler(move || {
+            if let Some(pid) = *pid_ref.lock().unwrap() {
+                kill_tree(pid);
+            }
+            std::process::exit(0);
+        }).expect("failed to set Ctrl+C handler");
+    }
+
+    #[cfg(windows)]
+    let _front = spawn_front_dev("../front", &child_pid);
 
     wait_front_alive("http://127.0.0.1:5173", Duration::from_secs(8));
 
@@ -221,7 +249,10 @@ fn main() {
     }
 
     #[cfg(windows)]
-    if let Some(mut child) = _front {
-        let _ = child.kill();
+    {
+        use std::process::Command;
+        let _ = Command::new("cmd")
+            .args(["/C", "netstat -ano | findstr :5173"])
+            .status();
     }
 }
