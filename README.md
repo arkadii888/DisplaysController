@@ -26,3 +26,30 @@
 ![3.gif](front/src/assets/3.gif)
 
 ## Installation
+
+**Requirements**
+- [Rust](https://rustup.rs/) — for backend
+- [Node.js (LTS)](https://nodejs.org/) — for frontend
+
+---
+
+```bash
+git clone https://github.com/arkadii888/DisplaysController.git
+cd DisplaysController/front
+
+# Allow npm scripts to run in PowerShell (Windows only)
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned -Force
+
+# Install frontend dependencies
+npm install
+
+# Run backend (starts both backend and frontend)
+cd ../back
+cargo run
+```
+
+---
+
+**Press local addres to start using Displays Controller**
+
+![console.png](front/src/assets/console.png)
