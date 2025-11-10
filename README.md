@@ -31,8 +31,6 @@
 - [Rust](https://rustup.rs/) — for backend
 - [Node.js (LTS)](https://nodejs.org/) — for frontend
 
----
-
 ```bash
 git clone https://github.com/arkadii888/DisplaysController.git
 cd DisplaysController/front
@@ -48,7 +46,7 @@ cd ../back
 cargo run
 ```
 
-**Press the local address to open**
+**Press the local link to start using Displays Controller**
 
 ![console.png](front/src/assets/console.png)
 
